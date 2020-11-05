@@ -1,0 +1,14 @@
+* {
+    font-family: Roboto, sans-serif;
+    text-align: center;
+    font-weight: normal;
+}
+
+body {
+    background: #c9c9c9;
+    background: linear-gradient(0deg, #c9c9c9 0%, #e7e7e7 20%, white 100%);
+}
+
+header {
+    font-size: 0.5em;
+}
