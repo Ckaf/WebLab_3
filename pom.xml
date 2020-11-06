@@ -32,7 +32,15 @@
             <version>11.2.0.4</version>
         </dependency>
 
-<!--        &lt;!&ndash; https://mvnrepository.com/artifact/com.sun.faces/jsf-impl &ndash;&gt;-->
+        <!-- https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc8 -->
+        <dependency>
+            <groupId>com.oracle.database.jdbc</groupId>
+            <artifactId>ojdbc8</artifactId>
+            <version>19.8.0.0</version>
+        </dependency>
+
+
+        <!--        &lt;!&ndash; https://mvnrepository.com/artifact/com.sun.faces/jsf-impl &ndash;&gt;-->
 <!--        <dependency>-->
 <!--            <groupId>com.sun.faces</groupId>-->
 <!--            <artifactId>jsf-impl</artifactId>-->
