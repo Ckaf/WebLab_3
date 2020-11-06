@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ace="http://www.icefaces.org/icefaces/components">
+<div class="x-value">
+    <p>Выберите X:</p>
+    <h:form id="x">
+        <h:selectOneRadio value="#{data.x}">
+            <f:selectItem itemValue="-5" itemLabel="-5"/>
+            <f:selectItem itemValue="-4" itemLabel="-4"/>
+            <f:selectItem itemValue="-3" itemLabel="-3"/>
+            <f:selectItem itemValue="-2" itemLabel="-2"/>
+            <f:selectItem itemValue="-1" itemLabel="-1"/>
+            <f:selectItem itemValue="0" itemLabel="0"/>
+            <f:selectItem itemValue="1" itemLabel="1"/>
+            <f:selectItem itemValue="2" itemLabel="2"/>
+            <f:selectItem itemValue="3" itemLabel="3"/>
+        </h:selectOneRadio>
+    </h:form>
+</div>
+<div class="y-value">
+    <p>Выберите Y:</p>
+    <h:inputText id="y" name="y" a:placeholder="Value in [-3..5]"
+                 converterMessage="Y must be number..."
+                 value="#{data.y}"
+                 validatorMessage="Y must be number between -3 and 5 inclusive"
+                 required="true" requiredMessage="Y is required" maxlength="6">
+        <f:validateDoubleRange minimum="-3" maximum="5"/>
+    </h:inputText>
+</div>
+
+<!--TODO: fix slider [IT IS JUST NOT SHOWING ON THE PAGE]-->
+<div class="r-value">
+    <p>Выберите R:</p>
+    <h:form>
+        <ace:sliderEntry value="#{data.r}" min="2" max="5"/>
+    </h:form>
+</div>
+
+<h:commandButton value="Submit" action="result"/>
+</html>
