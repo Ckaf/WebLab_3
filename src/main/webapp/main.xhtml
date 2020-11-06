@@ -6,12 +6,15 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 <head>
     <title>MainPage</title>
-    <link rel="stylesheet" href="../css/graphic.css"/>
-    <link rel="stylesheet" href="../css/style.css"/>
+    <link rel="stylesheet" href="css/graphic.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
 <div class="graphic">
-    <ui:include src="graphic.xhtml" />
+    <ui:include src="pages/graphic.xhtml" />
+</div>
+<div class="form">
+    <ui:include src="pages/form.xhtml"/>
 </div>
 
 <h:link outcome="starter">Go to starter page</h:link>

@@ -6,19 +6,19 @@
         version="2.0">
 
     <navigation-rule>
-        <from-view-id>/starter.xhtml</from-view-id>
+        <from-view-id>../starter.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>main</from-outcome>
-            <to-view-id>/pages/main.xhtml</to-view-id>
+            <to-view-id>../main.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
     </navigation-rule>
 
     <navigation-rule>
-        <from-view-id>/pages/main.xhtml</from-view-id>
+        <from-view-id>../main.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>starter</from-outcome>
-            <to-view-id>/starter.xhtml</to-view-id>
+            <to-view-id>../starter.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
     </navigation-rule>
