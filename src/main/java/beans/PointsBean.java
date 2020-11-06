@@ -23,6 +23,9 @@ public class PointsBean implements Serializable {
 	@Getter
 	private double[] r = new double[12];
 
+	@Getter
+	private String result;
+
 	//TODO: finish this
 
 }

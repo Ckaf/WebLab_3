@@ -6,25 +6,25 @@
       xml:lang="en" lang="en">
 
 <div>Results</div>
-<h:dataTable id="result-table" value="#{pointsBean.allPoints}" var="point">
+<h:dataTable id="result-table">
     <h:column>
         <f:facet name="header">X</f:facet>
-        #{point.x}
+        ${pointsBean.x}
     </h:column>
 
     <h:column>
         <f:facet name="header">Y</f:facet>
-        #{point.y}
+        ${pointsBean.y}
     </h:column>
 
     <h:column>
         <f:facet name="header">R</f:facet>
-        #{point.r}
+        ${pointsBean.r}
     </h:column>
 
     <h:column>
         <f:facet name="header">Result</f:facet>
-        #{point.result}
+        ${pointsBean.result}
     </h:column>
 
 </h:dataTable>
