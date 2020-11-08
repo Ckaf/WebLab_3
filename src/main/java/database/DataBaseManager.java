@@ -36,17 +36,17 @@ public class DataBaseManager {
 
 	private Connection connection;
 
+	public DataBaseManager() {
+		this(DB_URL, "danilax86", "1337");
+	}
+
 	public DataBaseManager(String dbUrl, String user, String pass) {
 		try {
 			connection = DriverManager.getConnection(dbUrl, user, pass);
 		} catch (SQLException e) {
-			System.out.println("Connection to database failed");
+			System.out.println("Connection to database failed" + dbUrl + user + pass);
 			e.printStackTrace();
 		}
-	}
-
-	public DataBaseManager() {
-		this(DB_URL, USER, PASS);
 	}
 
 	public ArrayList<PointQ> getCollectionFromDataBase() throws SQLException {
