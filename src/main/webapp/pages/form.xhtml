@@ -9,25 +9,26 @@
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:ui="http://java.sun.com/jsf/facelets"
 >
+<h:form>
 <div class="x-value">
     <p>Выберите X:</p>
-    <h:form id="x">
-        <h:selectOneRadio value="#{pointsBean.x}" >
-            <f:selectItem itemValue="-5" itemLabel="-5"/>
-            <f:selectItem itemValue="-4" itemLabel="-4"/>
-            <f:selectItem itemValue="-3" itemLabel="-3"/>
-            <f:selectItem itemValue="-2" itemLabel="-2"/>
-            <f:selectItem itemValue="-1" itemLabel="-1"/>
-            <f:selectItem itemValue="0" itemLabel="0"/>
-            <f:selectItem itemValue="1" itemLabel="1"/>
-            <f:selectItem itemValue="2" itemLabel="2"/>
-            <f:selectItem itemValue="3" itemLabel="3"/>
-        </h:selectOneRadio>
-    </h:form>
+
+    <h:selectOneRadio value="#{pointsBean.x}">
+        <f:selectItem itemValue="-5" itemLabel="-5"/>
+        <f:selectItem itemValue="-4" itemLabel="-4"/>
+        <f:selectItem itemValue="-3" itemLabel="-3"/>
+        <f:selectItem itemValue="-2" itemLabel="-2"/>
+        <f:selectItem itemValue="-1" itemLabel="-1"/>
+        <f:selectItem itemValue="0" itemLabel="0"/>
+        <f:selectItem itemValue="1" itemLabel="1"/>
+        <f:selectItem itemValue="2" itemLabel="2"/>
+        <f:selectItem itemValue="3" itemLabel="3"/>
+    </h:selectOneRadio>
+
 </div>
 <div class="y-value">
     <p>Выберите Y:</p>
-    <h:inputText id="y" name="y"  value="#{pointsBean.y}" a:placeholder="Value in [-3..5]"
+    <h:inputText id="y" name="y" value="#{pointsBean.y}" a:placeholder="Value in [-3..5]"
                  converterMessage="Y must be number..."
                  validatorMessage="Y must be number between -3 and 5 inclusive"
                  required="true" requiredMessage="Y is required" maxlength="6">
@@ -38,13 +39,11 @@
 <!--TODO: fix slider [IT IS JUST NOT SHOWING ON THE PAGE]-->
 <div class="r-value">
     <p>Выберите R:</p>
-    <h:form>
-        <ace:sliderEntry value="#{pointsBean.r}" />
-    </h:form>
+        <ace:sliderEntry value="#{pointsBean.r}"/>
 </div>
 <div>
     <h:commandButton type="submit" value="Submit" action="#{pointsBean.submit}">
-
     </h:commandButton>
 </div>
+</h:form>
 </html>
