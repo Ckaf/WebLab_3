@@ -14,9 +14,9 @@ import java.util.ArrayList;
 @Getter
 @Setter
 public class PointsBean implements Serializable {
-	double x = 0;
-	double y = 0;
-	double r = 1;
+	double x;
+	double y;
+	double r;
 	ArrayList<Double> list = new ArrayList<>();
 	@ManagedProperty(value = "#{dataBaseBean}")
 	DataBaseBean dataBaseBean = new DataBaseBean();
