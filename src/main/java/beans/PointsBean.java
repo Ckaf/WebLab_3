@@ -1,12 +1,15 @@
 package beans;
 
+import database.DataBaseManager;
 import lombok.Getter;
 import lombok.Setter;
+import models.PointQ;
 
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import java.io.Serializable;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 @ManagedBean(name = "pointsBean")
@@ -17,16 +20,16 @@ public class PointsBean implements Serializable {
 	double x;
 	double y;
 	double r;
-	ArrayList<Double> list = new ArrayList<>();
-	@ManagedProperty(value = "#{dataBaseBean}")
-	DataBaseBean dataBaseBean = new DataBaseBean();
+	ArrayList<PointQ> pointsCollection = new ArrayList<>();
+	DataBaseManager dataBaseManager = new DataBaseManager();
+
 
 	public void submit() {
-		System.out.println("==============================");
-		list.add(x);
-		System.out.println(list);
-		dataBaseBean.addPoint(x, y, r, getResult());
+		dataBaseManager.addPoint(x, y, r, getResult());
+	}
 
+	public void onload() throws SQLException {
+		pointsCollection = dataBaseManager.getCollectionFromDataBase();
 	}
 
 	public String getResult() {

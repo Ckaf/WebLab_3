@@ -16,13 +16,13 @@ public class DataBaseManager {
 	private static final String TABLE_NAME = "POINTS";
 
 	static {
-		try (FileReader fileReader = new FileReader(FILE_WITH_ACCOUNT);
-		     BufferedReader reader = new BufferedReader(fileReader)) {
-			USER = reader.readLine();
-			PASS = reader.readLine();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+//		try (FileReader fileReader = new FileReader(FILE_WITH_ACCOUNT);
+//		     BufferedReader reader = new BufferedReader(fileReader)) {
+//			USER = reader.readLine();
+//			PASS = reader.readLine();
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
 
 		System.out.println("Connection to Oracle JDBC");
 		try {
@@ -43,6 +43,7 @@ public class DataBaseManager {
 	public DataBaseManager(String dbUrl, String user, String pass) {
 		try {
 			connection = DriverManager.getConnection(dbUrl, user, pass);
+			connection.setAutoCommit(true);
 		} catch (SQLException e) {
 			System.out.println("Connection to database failed" + dbUrl + user + pass);
 			e.printStackTrace();
@@ -52,6 +53,7 @@ public class DataBaseManager {
 	public ArrayList<PointQ> getCollectionFromDataBase() throws SQLException {
 		PreparedStatement statement = connection.prepareStatement("select * from " + TABLE_NAME);
 		ResultSet resultSet = statement.executeQuery();
+		System.out.println(resultSet.toString());
 		ArrayList<PointQ> collection = new ArrayList<>();
 		while (resultSet.next()) {
 			PointQ point = new PointQ(
@@ -64,7 +66,7 @@ public class DataBaseManager {
 		return collection;
 	}
 
-	public boolean addPoint(double x, double y, double r, String result) {
+	public void addPoint(double x, double y, double r, String result) {
 		try {
 			PreparedStatement statement = connection.prepareStatement("insert into " + TABLE_NAME +
 					" values (?, ?, ?, ?)");
@@ -73,21 +75,17 @@ public class DataBaseManager {
 			statement.setDouble(3, r);
 			statement.setString(4, result);
 			statement.execute();
-			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
-			return false;
 		}
 	}
 
-	public boolean removeAllPoints() {
+	public void removeAllPoints() {
 		try {
 			PreparedStatement statement = connection.prepareStatement("delete from " + TABLE_NAME);
 			statement.execute();
-			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
-			return false;
 		}
 	}
 }

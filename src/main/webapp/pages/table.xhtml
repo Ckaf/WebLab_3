@@ -6,25 +6,26 @@
       xml:lang="en" lang="en">
 
 <div>Results</div>
-<h:dataTable id="result-table">
+<h:dataTable id="result-table" value="#{pointsBean.pointsCollection}" var="point">
+    <f:event type="preRenderView" listener="#{pointsBean.onload}"/>
     <h:column>
         <f:facet name="header">X</f:facet>
-        ${pointsBean.x}
+        ${point.x}
     </h:column>
 
     <h:column>
         <f:facet name="header">Y</f:facet>
-        ${pointsBean.y}
+        ${point.y}
     </h:column>
 
     <h:column>
         <f:facet name="header">R</f:facet>
-        ${pointsBean.r}
+        ${point.r}
     </h:column>
 
     <h:column>
         <f:facet name="header">Result</f:facet>
-        ${pointsBean.result}
+        ${point.result}
     </h:column>
 
 </h:dataTable>
