@@ -2,34 +2,22 @@ package database;
 
 import models.PointQ;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 
 public class DataBaseManager {
-	private static final String DB_URL = "jdbc:oracle:thin:@localhost:1521:lab3";
-	private static String USER;
-	private static String PASS;
-	private static final String FILE_WITH_ACCOUNT = "src\\main\\java\\database\\account";
+	private static final String DB_URL = "jdbc:oracle:thin:@localhost:1521:orbis";
+	private static final String USER = "s283230";
+	private static final String PASS = "gvi699";
 	private static final String TABLE_NAME = "POINTS";
 
 	static {
-//		try (FileReader fileReader = new FileReader(FILE_WITH_ACCOUNT);
-//		     BufferedReader reader = new BufferedReader(fileReader)) {
-//			USER = reader.readLine();
-//			PASS = reader.readLine();
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-
 		System.out.println("Connection to Oracle JDBC");
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver") ;
 			System.out.println("PostgreSQL JDBC Driver successfully connected");
 		} catch (ClassNotFoundException e) {
-			System.out.println("PostgreSQL JDBC Driver is not found. Include it in your library path");
+			System.out.println("Oracle JDBC Driver is not found. Include it in your library path");
 			e.printStackTrace();
 		}
 	}
@@ -37,15 +25,14 @@ public class DataBaseManager {
 	private Connection connection;
 
 	public DataBaseManager() {
-		this(DB_URL, "danilax86", "1337");
+		this(DB_URL, USER, PASS);
 	}
 
-	public DataBaseManager(String dbUrl, String user, String pass) {
+	public DataBaseManager(String dbUrl, String usr, String pass) {
 		try {
-			connection = DriverManager.getConnection(dbUrl, user, pass);
-			connection.setAutoCommit(true);
+			connection = DriverManager.getConnection(dbUrl, usr, pass);
 		} catch (SQLException e) {
-			System.out.println("Connection to database failed" + dbUrl + user + pass);
+			System.out.println("Connection to database failed " + dbUrl);
 			e.printStackTrace();
 		}
 	}
@@ -53,7 +40,6 @@ public class DataBaseManager {
 	public ArrayList<PointQ> getCollectionFromDataBase() throws SQLException {
 		PreparedStatement statement = connection.prepareStatement("select * from " + TABLE_NAME);
 		ResultSet resultSet = statement.executeQuery();
-		System.out.println(resultSet.toString());
 		ArrayList<PointQ> collection = new ArrayList<>();
 		while (resultSet.next()) {
 			PointQ point = new PointQ(
