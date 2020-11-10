@@ -1,3 +1,10 @@
+function checkResult(x, y, r) {
+    let checkQuarterCircle = (x, y, r) => (x <= 0) && (y <= 0) && ((x * x + y * y) <= r * r);
+    let checkTriangle = (x, y, r) => x >= 0 && x <= r && y >= 0 && y <= r / 2 && (y <= -x / 2 + r / 2);
+    let checkRectangle = (x, y, r) => x >= -r && x <= 0 && y >= 0 && y <= r / 2;
+    return checkQuarterCircle(x, y, r) || checkTriangle(x, y, r) || checkRectangle(x, y, r);
+}
+
 function getRValue() {
     return parseFloat($("span").text());
 }
@@ -8,18 +15,11 @@ function drawPointsFromTable() {
         let x = parseFloat(point.find(">:first-child").text());
         let y = parseFloat(point.find(">:nth-child(2)").text());
         let r = getRValue();
-        let result = point.find(">:nth-child(4)").text();
         if (isNaN(x) || isNaN(y)) {
             return;
         }
         let color;
-        if (result.includes("Y")) {
-            color = "green"
-        } else if (result.includes("N")) {
-            color = "red"
-        } else {
-            console.log("Oops")
-        }
+        color = checkResult(x, y, r) ? "green" : "red"
 
         function xValueForPoint(x) {
             return (x / r * 2 * 60 + 150)

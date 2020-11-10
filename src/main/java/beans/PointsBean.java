@@ -7,7 +7,6 @@ import models.PointQ;
 
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -33,7 +32,7 @@ public class PointsBean implements Serializable {
 	}
 
 	public String getResult(double x, double y ,double r) {
-		if (checkSquare(x, y, r) || checkQuarterCircle(x, y, r) || checkTriangle(x, y, r)) return "Y";
+		if (checkRectangle(x, y, r) || checkQuarterCircle(x, y, r) || checkTriangle(x, y, r)) return "Y";
 		else return "N";
 	}
 
@@ -43,7 +42,7 @@ public class PointsBean implements Serializable {
 		dataBaseManager.addPoint(xx, yy, rr, getResult(xx, yy, rr));
 	}
 
-	private boolean checkSquare(double x, double y, double r) {
+	private boolean checkRectangle(double x, double y, double r) {
 		return x >= -r && x <= 0 && y >= 0 && y <= r / 2;
 	}
 
