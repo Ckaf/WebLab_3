@@ -25,16 +25,18 @@
         <f:selectItem itemValue="3" itemLabel="3"/>
     </h:selectOneRadio>
 
-</div>
-<div class="y-value">
-    <p>Выберите Y:</p>
-    <h:inputText id="y" name="y" value="#{pointsBean.y}" a:placeholder="Value in [-3..5]"
-                 converterMessage="Y must be number..."
-                 validatorMessage="Y must be number between -3 and 5 inclusive"
-                 required="true" requiredMessage="Y is required" maxlength="6">
-        <f:validateDoubleRange minimum="-3" maximum="5"/>
-    </h:inputText>
-</div>
+    </div>
+    <div class="y-value">
+        <p>Выберите Y:</p>
+        <h:inputText id="y" name="y" value="#{pointsBean.y}" a:placeholder="Value in [-3..5]"
+                     converterMessage="Y must be number..."
+                     validatorMessage="Y must be number between -3 and 5 inclusive"
+                     required="true" requiredMessage="Y is required" maxlength="6">
+            <f:validateDoubleRange minimum="-3" maximum="5"/>
+        </h:inputText>
+        <h:message for="y" style="color: red"/>
+        <div class="invalid-y d-none h5" style="color: red"></div>
+    </div>
 
 <div class="r-value">
     <p>Выберите R:</p>
