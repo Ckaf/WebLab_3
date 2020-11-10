@@ -19,22 +19,28 @@ import java.util.ArrayList;
 public class PointsBean implements Serializable {
 	double x;
 	double y;
-	double r;
+	double r = 1;
 	ArrayList<PointQ> pointsCollection = new ArrayList<>();
 	DataBaseManager dataBaseManager = new DataBaseManager();
 
 
 	public void submit() {
-		dataBaseManager.addPoint(x, y, r, getResult());
+		dataBaseManager.addPoint(x, y, r, getResult(x, y, r));
 	}
 
 	public void onload() throws SQLException {
 		pointsCollection = dataBaseManager.getCollectionFromDataBase();
 	}
 
-	public String getResult() {
+	public String getResult(double x, double y ,double r) {
 		if (сheckSquare(x, y, r) || сheckQuarterCircle(x, y, r) || сheckTriangle(x, y, r)) return "Y";
 		else return "N";
+	}
+
+	private double xx, yy, rr;
+
+	public void submitSuper() {
+		dataBaseManager.addPoint(xx, yy, rr, getResult(xx, yy, rr));
 	}
 
 	private boolean сheckSquare(double x, double y, double r) {

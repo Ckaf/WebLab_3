@@ -8,6 +8,7 @@
     <title>MainPage</title>
     <link rel="stylesheet" href="css/graphic.css"/>
     <link rel="stylesheet" href="css/style.css"/>
+    <script type="text/javascript" src="scripts/jquery.js"></script>
 </head>
 <body>
 <div class="graphic">
@@ -16,10 +17,12 @@
 <div class="form">
     <ui:include src="pages/form.xhtml"/>
 </div>
+<ui:include src="pages/hiddenFrom.xhtml"/>
 <div class="table">
     <ui:include src="pages/table.xhtml"/>
 </div>
 
 <h:link outcome="starter">Go to starter page</h:link>
+<script type="text/javascript" src="scripts/setPointer.js"></script>
 </body>
 </html>
