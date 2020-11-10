@@ -42,6 +42,10 @@ public class PointsBean implements Serializable {
 		dataBaseManager.addPoint(xx, yy, rr, getResult(xx, yy, rr));
 	}
 
+	public void clear() {
+		dataBaseManager.removeAllPoints();
+	}
+
 	private boolean checkRectangle(double x, double y, double r) {
 		return x >= -r && x <= 0 && y >= 0 && y <= r / 2;
 	}
