@@ -33,7 +33,7 @@ public class PointsBean implements Serializable {
 	}
 
 	public String getResult(double x, double y ,double r) {
-		if (сheckSquare(x, y, r) || сheckQuarterCircle(x, y, r) || сheckTriangle(x, y, r)) return "Y";
+		if (checkSquare(x, y, r) || checkQuarterCircle(x, y, r) || checkTriangle(x, y, r)) return "Y";
 		else return "N";
 	}
 
@@ -43,15 +43,15 @@ public class PointsBean implements Serializable {
 		dataBaseManager.addPoint(xx, yy, rr, getResult(xx, yy, rr));
 	}
 
-	private boolean сheckSquare(double x, double y, double r) {
+	private boolean checkSquare(double x, double y, double r) {
 		return x >= -r && x <= 0 && y >= 0 && y <= r / 2;
 	}
 
-	private boolean сheckQuarterCircle(double x, double y, double r) {
+	private boolean checkQuarterCircle(double x, double y, double r) {
 		return (x <= 0) && (y <= 0) && ((x * x + y * y) <= r * r);
 	}
 
-	private boolean сheckTriangle(double x, double y, double r) {
+	private boolean checkTriangle(double x, double y, double r) {
 		return x >= 0 && x <= r && y >= 0 && y <= r / 2 && (y <= -x / 2 + r / 2);
 	}
 }
