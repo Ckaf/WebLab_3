@@ -7,7 +7,7 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:ace="http://www.icefaces.org/icefaces/components"
 >
 <h:form id="form">
     <div class="x-value">
@@ -39,8 +39,12 @@
 
     <div class="r-value">
         <p>Выберите R:</p>
-        <h:outputText id="sliderValue" value="1"/>
+        <h:outputText id="sliderValue" value="#{pointsBean.r}"/>
+        <ace:sliderEntry id="slider" value="#{pointsBean.r}" min="2" max="5" stepPercent="25" showLabels="true">
+            <ace:ajax render="sliderValue" event="slideEnd" execute="@this"/>
+        </ace:sliderEntry>
     </div>
+
     <div>
         <h:commandButton type="submit" value="Submit" action="#{pointsBean.submit}"/>
         <h:commandButton type="submit" value="Clear All" action="#{pointsBean.clear}"/>
