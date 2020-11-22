@@ -15,7 +15,7 @@ public class DataBaseManager {
 		System.out.println("Connection to Oracle JDBC");
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver") ;
-			System.out.println("PostgreSQL JDBC Driver successfully connected");
+			System.out.println("Oracle JDBC Driver successfully connected");
 		} catch (ClassNotFoundException e) {
 			System.out.println("Oracle JDBC Driver is not found. Include it in your library path");
 			e.printStackTrace();
