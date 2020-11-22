@@ -24,7 +24,7 @@ public class PointsBean implements Serializable {
 
 
 	public void submit() {
-		dataBaseManager.addPoint(x, y, r, getResult(x, y, r));
+		dataBaseManager.addPoint(x, y, r / 10, getResult(x, y, r / 10));
 	}
 
 	public void onload() throws SQLException {
