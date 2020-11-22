@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class PointsBean implements Serializable {
 	double x;
 	double y;
-	double r = 2;
+	double r = 20;
 	ArrayList<PointQ> pointsCollection = new ArrayList<>();
 	DataBaseManager dataBaseManager = new DataBaseManager();
 
