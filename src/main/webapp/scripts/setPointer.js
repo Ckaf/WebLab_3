@@ -10,7 +10,7 @@ function getRValue() {
 }
 
 function drawPointsFromTable() {
-    $("tbody tr").each(function () {
+    $("#result-table tbody tr").each(function () {
         let point = $(this);
         let x = parseFloat(point.find(">:first-child").text());
         let y = parseFloat(point.find(">:nth-child(2)").text());
