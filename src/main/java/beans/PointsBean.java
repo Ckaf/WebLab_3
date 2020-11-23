@@ -19,6 +19,7 @@ public class PointsBean implements Serializable {
 	double x;
 	double y;
 	double r = 20;
+	String script = "location.reload();";
 	ArrayList<PointQ> pointsCollection = new ArrayList<>();
 	DataBaseManager dataBaseManager = new DataBaseManager();
 
