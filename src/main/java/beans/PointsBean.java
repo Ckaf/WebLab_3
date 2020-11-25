@@ -18,13 +18,14 @@ import java.util.ArrayList;
 public class PointsBean implements Serializable {
 	double x;
 	double y;
-	double r = 1;
+	double r = 20;
+	String script = "location.reload();";
 	ArrayList<PointQ> pointsCollection = new ArrayList<>();
 	DataBaseManager dataBaseManager = new DataBaseManager();
 
 
 	public void submit() {
-		dataBaseManager.addPoint(x, y, r, getResult(x, y, r));
+		dataBaseManager.addPoint(x, y, r / 10, getResult(x, y, r / 10));
 	}
 
 	public void onload() throws SQLException {
